@@ -31,7 +31,7 @@ public class JwtService {
                 .setExpiration(expirateDate)
                 .addClaims(claims)
                 .compact();
-        return new AccessToken("");
+        return new AccessToken(token);
     }
 
     private Date generateExpirationDate() {
