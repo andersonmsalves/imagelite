@@ -5,6 +5,7 @@ import br.com.anderson.imageliteapi.config.filter.JwtFilter;
 import br.com.anderson.imageliteapi.domain.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -37,6 +38,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configure(http)  )
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/v1/users/**").permitAll();
+                    auth.requestMatchers(HttpMethod.GET, "/v1/images/**").permitAll();
                     auth.anyRequest().authenticated();
                     // auth.anyRequest().permitAll();
                 })
